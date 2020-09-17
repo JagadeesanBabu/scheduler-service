@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: scheduler-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://0.0.0.0:5431/jet
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    show-sql: false
+  flyway:
+    enabled: true
+    url: jdbc:postgresql://0.0.0.0:5431/jet
+    user: postgres
+    password: postgres
+
+
+yahoo:
+  api:
+    baseUrl: http://test.lisuns.com:4531
+    accessKey: c0140bb8-018c-444c-a1d9-0ee86d1dd536
