@@ -1,5 +1,7 @@
 package com.trading.schedulerservice.entity;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
@@ -8,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity(name = "real_time_data")
+@Data
 public class TradeData {
     @Id
     private UUID id;

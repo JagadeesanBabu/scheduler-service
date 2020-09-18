@@ -11,6 +11,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 @Slf4j
@@ -19,11 +21,11 @@ public class Scheduler {
     private final TradeDataRepository repository;
     private final TradeDataMapper mapper;
 
-    @Scheduled(fixedDelay = 1000)
+    @Scheduled(cron = "0 * * ? * *")
     public void saveTradeDataTask() {
-        TradeData tradeData = mapper.toEntity(apiCallService.call());
+        List<TradeData> tradeData = mapper.toEntityList(apiCallService.call().getPriceDetails());
         log.info("Saving trade data {} ", tradeData );
-        repository.save(tradeData);
+        repository.saveAll(tradeData);
     }
 
 }

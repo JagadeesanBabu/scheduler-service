@@ -10,6 +10,8 @@ com/trading/schedulerservice/SchedulerServiceApplication.java
  com.trading.schedulerservice.SchedulerServiceApplication
 com/trading/schedulerservice/config/ApiConfig.java
  com.trading.schedulerservice.config.ApiConfig
+com/trading/schedulerservice/pojo/PriceDetails.java
+ com.trading.schedulerservice.pojo.PriceDetails
 com/trading/schedulerservice/api/ApiCallService.java
  com.trading.schedulerservice.api.ApiCallService
  com.trading.schedulerservice.api.ApiCallService$1
