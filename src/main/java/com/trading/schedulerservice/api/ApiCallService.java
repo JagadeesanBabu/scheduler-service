@@ -26,7 +26,7 @@ public class ApiCallService {
     public ApiResponse call() {
         UriComponentsBuilder uriComponentsBuilder =
                 //http://test.lisuns.com:4531/GetHistory/?accessKey=c0140bb8-018c-444c-a1d9-0ee86d1dd536&exchange=NSE_IDX&instrumentIdentifier=NIFTY%20BANK&periodicity=Minute&period=1&max=1
-                UriComponentsBuilder.fromUriString("http://test.lisuns.com:4531/GetHistory/")
+                UriComponentsBuilder.fromUriString(apiConfig.getBaseUrl() + "/GetHistory/")
                 .queryParam("accessKey", "c0140bb8-018c-444c-a1d9-0ee86d1dd536")
                         .queryParam("exchange", "NSE_IDX")
                         .queryParam("instrumentIdentifier", "NIFTY BANK")

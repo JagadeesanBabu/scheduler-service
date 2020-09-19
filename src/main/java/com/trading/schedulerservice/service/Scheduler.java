@@ -5,9 +5,6 @@ import com.trading.schedulerservice.entity.TradeData;
 import com.trading.schedulerservice.repository.TradeDataRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +18,9 @@ public class Scheduler {
     private final TradeDataRepository repository;
     private final TradeDataMapper mapper;
 
+    /**
+     * runs every minute at 0th sec
+     */
     @Scheduled(cron = "0 * * ? * *")
     public void saveTradeDataTask() {
         List<TradeData> tradeData = mapper.toEntityList(apiCallService.call().getPriceDetails());

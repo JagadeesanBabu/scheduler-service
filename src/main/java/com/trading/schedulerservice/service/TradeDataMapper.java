@@ -2,9 +2,13 @@ package com.trading.schedulerservice.service;
 
 import com.trading.schedulerservice.entity.TradeData;
 import com.trading.schedulerservice.pojo.PriceDetails;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.Named;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -18,8 +22,8 @@ public interface TradeDataMapper {
             @Mapping(target = "lastTradeTime", source = "priceDetails", qualifiedByName = "getLocalDateTime()"),
             @Mapping(target = "close", source = "close", qualifiedByName = "getPrice()"),
             @Mapping(target = "open", source = "open", qualifiedByName = "getPrice()"),
-            @Mapping(target = "high", source = "open", qualifiedByName = "getPrice()"),
-            @Mapping(target = "low", source = "open", qualifiedByName = "getPrice()"),
+            @Mapping(target = "high", source = "high", qualifiedByName = "getPrice()"),
+            @Mapping(target = "low", source = "low", qualifiedByName = "getPrice()"),
     })
     TradeData toEntity(PriceDetails priceDetails);
 
@@ -28,7 +32,7 @@ public interface TradeDataMapper {
     @Named("getPrice")
     default BigDecimal getPrice(Double price) {
         BigDecimal decimalPrice = new BigDecimal(price);
-        decimalPrice.setScale(2, BigDecimal.ROUND_UP);
+        decimalPrice.setScale(2, RoundingMode.HALF_UP);
         return decimalPrice;
     }
 

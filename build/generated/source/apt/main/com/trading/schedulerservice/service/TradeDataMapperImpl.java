@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-09-18T11:47:51+0200",
+    date = "2020-09-18T17:10:27+0200",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 14.0.1 (Oracle Corporation)"
 )
 @Component
@@ -23,8 +23,8 @@ public class TradeDataMapperImpl implements TradeDataMapper {
 
         TradeData tradeData = new TradeData();
 
-        tradeData.setHigh( getPrice( priceDetails.getOpen() ) );
-        tradeData.setLow( getPrice( priceDetails.getOpen() ) );
+        tradeData.setHigh( getPrice( priceDetails.getHigh() ) );
+        tradeData.setLow( getPrice( priceDetails.getLow() ) );
         tradeData.setLastTradeTime( getLocalDateTime( priceDetails ) );
         tradeData.setClose( getPrice( priceDetails.getClose() ) );
         tradeData.setOpen( getPrice( priceDetails.getOpen() ) );
